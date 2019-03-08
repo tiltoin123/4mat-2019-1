@@ -23,4 +23,71 @@ controller.novo = function(req, res) {
    );
 }
 
+controller.listar = function(req, res) {
+
+   Veiculo.find().exec().then(
+      // Callback do bem
+      function(veiculos) {
+         // Retorna TODOS os veículos em um vetor,
+         // ou um vetor vazio se não tiver nada
+         res.json(veiculos).end();         
+      },
+      // Callback do mal
+      function(erro) {
+         console.error(erro);
+         res.sendStatus(500).end();
+      }
+   
+   );
+
+}
+
+controller.obterUm = function(req, res) {
+   // Capturamos o id do parâmetro da url
+   const id = req.params.id;
+
+   Veiculo.findById(id).exec().then(
+      // Callback do bem
+      function(veiculo) { // Retorna 0 ou 1 veículo
+         if(veiculo) {  // Encontrou
+            res.json(veiculo).end();
+         }
+         else {   // Não encontrou
+            // HTTP 404: Não encontrado
+            res.sendStatus(404).end();
+         }
+      },
+      // Callback do mal
+      function(erro) {
+         console.error(erro);
+         res.sendStatus(500).end();
+      }
+   );
+}
+
+controller.atualizar = function(req, res) {
+   // Capturamos o id de dentro do corpo da requisição
+   const id = req.body._id;
+
+   // Encontrar o objeto identificado por id
+   // e substituir seu conteúdo por req.body
+   Veiculo.findOneAndUpdate({_id: id}, req.body).exec().then(
+      // Callback do bem
+      function(veiculo) {
+         if(veiculo) {     // Encontrou e atualizou
+            // HTTP 204: Sem conteúdo
+            res.sendStatus(204).end();
+         }
+         else {            // Não encontrou (e não atualizou)
+            res.sendStatus(404).end();
+         }
+      },
+      // Callback do mal
+      function(erro) {
+         console.error(erro);
+         res.sendStatus(500).end();
+      }
+   );
+}
+
 module.exports = controller;
