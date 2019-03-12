@@ -90,4 +90,28 @@ controller.atualizar = function(req, res) {
    );
 }
 
+controller.excluir = function(req, res) {
+
+   // Capturamos o id a partir da URL da rota
+   const id = req.params.id;
+
+   Veiculo.findOneAndDelete({_id: id}).exec().then(
+      // Callback do bem
+      function(veiculo) {
+         if(veiculo) {     // Encontrou e excluiu
+            res.sendStatus(204).end();
+         }
+         else {            // Não encontrou (e não excluiu)
+            res.sendStatus(404).end();
+         }
+      },
+      // Callback do mal
+      function(erro) {
+         console.error(erro);
+         res.sendStatus(500).end();
+      }
+   );
+
+}
+
 module.exports = controller;
