@@ -4,12 +4,9 @@ module.exports = function() {
 
    const schema = mongoose.Schema({
       modelo: {
-         type: String,
+         type: mongoose.ObjectId,
+         ref: 'Modelo',
          required: true
-      },
-      marca: {
-         type: String,
-         required: true,
       },
       ano_fabricacao: {
          type: Number,
@@ -20,15 +17,13 @@ module.exports = function() {
          required: true
       },
       cor: {
-         type: String,
+         type: mongoose.ObjectId,
+         ref: 'Cor',
          required: true
       },
       combustivel: {
-         type: String,
-         required: true
-      },
-      categoria: {
-         type: String,
+         type: mongoose.ObjectId,
+         ref: 'Combustivel',
          required: true
       },
       placa: {
@@ -39,10 +34,6 @@ module.exports = function() {
          index: {
             unique: true
          }
-      },
-      importado: {
-         type: Boolean,
-         required: true
       },
       valor_compra: {
          type: Number,
@@ -58,16 +49,9 @@ module.exports = function() {
       data_venda: {
          type: Date
       }
+
    });
 
-   /*
-      PARÂMETROS DE mongoose.model()
-      1º -> nome do modelo (inicial maiúscula)
-      2º -> constante que descreve o modelo (schema)
-      3º -> nome da coleção (collection) no MongoDB
-            que armazenará os objetos derivados do modelo
-            (inicial minúscula, no plural)
-   */
    return mongoose.model('Veiculo', schema, 'veiculos');
 
 }

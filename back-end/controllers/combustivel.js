@@ -1,4 +1,4 @@
-const Veiculo = require('../models/Veiculo')(/* construtor */);
+const Combustivel = require('../models/Combustivel')(/* construtor */);
 
 const controller = {};
 
@@ -8,7 +8,7 @@ const controller = {};
    e res(ponse).
 */
 controller.novo = function(req, res) {
-   Veiculo.create(req.body).then(
+   Combustivel.create(req.body).then(
       // Callback se ser certo
       function() {
          // HTTP 201: Criado
@@ -25,18 +25,12 @@ controller.novo = function(req, res) {
 
 controller.listar = function(req, res) {
 
-   Veiculo.find()
-      // populate() de dois níveis: popula 'modelo' e, dentro
-      // dele, também popula 'marca'
-      .populate({path: 'modelo', populate: {path: 'marca'}})
-      .populate('cor')
-      .populate('combustivel')   
-      .exec().then(
+   Combustivel.find().exec().then(
       // Callback do bem
-      function(veiculos) {
+      function(combustiveis) {
          // Retorna TODOS os veículos em um vetor,
          // ou um vetor vazio se não tiver nada
-         res.json(veiculos).end();         
+         res.json(combustiveis).end();         
       },
       // Callback do mal
       function(erro) {
@@ -52,11 +46,11 @@ controller.obterUm = function(req, res) {
    // Capturamos o id do parâmetro da url
    const id = req.params.id;
 
-   Veiculo.findById(id).exec().then(
+   Combustivel.findById(id).exec().then(
       // Callback do bem
-      function(veiculo) { // Retorna 0 ou 1 veículo
-         if(veiculo) {  // Encontrou
-            res.json(veiculo).end();
+      function(combustivel) { // Retorna 0 ou 1 veículo
+         if(combustivel) {  // Encontrou
+            res.json(combustivel).end();
          }
          else {   // Não encontrou
             // HTTP 404: Não encontrado
@@ -77,10 +71,10 @@ controller.atualizar = function(req, res) {
 
    // Encontrar o objeto identificado por id
    // e substituir seu conteúdo por req.body
-   Veiculo.findOneAndUpdate({_id: id}, req.body).exec().then(
+   Combustivel.findOneAndUpdate({_id: id}, req.body).exec().then(
       // Callback do bem
-      function(veiculo) {
-         if(veiculo) {     // Encontrou e atualizou
+      function(combustivel) {
+         if(combustivel) {     // Encontrou e atualizou
             // HTTP 204: Sem conteúdo
             res.sendStatus(204).end();
          }
@@ -101,10 +95,10 @@ controller.excluir = function(req, res) {
    // Capturamos o id a partir da URL da rota
    const id = req.params.id;
 
-   Veiculo.findOneAndDelete({_id: id}).exec().then(
+   Combustivel.findOneAndDelete({_id: id}).exec().then(
       // Callback do bem
-      function(veiculo) {
-         if(veiculo) {     // Encontrou e excluiu
+      function(combustivel) {
+         if(combustivel) {     // Encontrou e excluiu
             res.sendStatus(204).end();
          }
          else {            // Não encontrou (e não excluiu)
