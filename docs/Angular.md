@@ -97,11 +97,11 @@ yarn add material-design-icons --network-timeout 1000000000
 
 Abra o arquivo `src/styles.scss` e acrescente a **última linha**:
 
-```javascript
+```css
 /* src/styles.scss */
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-// Acrescente a linha a seguir
+/* Acrescente a linha a seguir */
 @import "~material-design-icons/iconfont/material-icons.css";
 ```
