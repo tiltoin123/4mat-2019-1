@@ -60,7 +60,7 @@ O comando anterior terá criado uma pasta chamada `front-end` com vários arquiv
 cd front-end
 ```
 
-> Se você precisou criar o arquivo **ng.bat** no passo nº 1, mova agora esse arquivo para dentro da pasta **front-end**.
+> Se você precisou criar o arquivo `ng.bat` no passo nº 1, mova agora esse arquivo para dentro da pasta `front-end`.
 
 O comando `ng new`, que executamos no passo anterior, gera um projeto Angular funcional. Para vê-lo, execute o seguinte comando no terminal:
 
