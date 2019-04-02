@@ -56,5 +56,30 @@ O comando `ng new`, que executamos no passo anterior, gera um projeto angular fu
 
 Esse comando irá compilar o projeto (demora um pouco na primeira execução). Ao final, abra seu navegador no endereço [http://localhost:4200](http://localhost:4200). Você verá a página padrão do projeto com o logotipo do Angular. 
 
+## 5. Adicionando os componentes Angular Material ao projeto
 
+Os componentes [Angular Material](https://material.angular.io/) foram desenvolvidos segundo as diretrizes do [Material Design](https://material.io/design/) do Google. Utilizando esses componentes, nosso projeto terá uma série de benefícios, como a padronização da interface e a habilidade de deixar a aplicação "pronta" para ambientes *mobile*.
 
+Para adicionar a biblioteca de componentes ao projeto, execute o comando abaixo no terminal:
+
+`ng add @angular/material`
+
+Esse comando também faz algumas perguntas. Responda conforme o modelo abaixo.
+
+* `? Choose a prebuilt theme name, or "custom" for a custom theme: (Use arrow keys)` Com a seta, escolha a primeira opção, **Indigo/Pink** (as demais são horrorosas :P)
+* `? Set up HammerJS for gesture recognition? (Y/n)` Responda **Y**.
+* `? Set up browser animations for Angular Material? (Y/n)` Responda **Y**.
+
+## 6. Instalando a biblioteca de ícones Material Icons
+
+No terminal:
+
+`yarn add material-design-icon`
+
+Abra o arquivo **src/styles.scss** e acrescente a linha em negrito:
+
+`/* src/styles.scss */`
+
+`@import '~@angular/material/prebuilt-themes/indigo-pink.css';`
+
+**`@import "~material-design-icons/iconfont/material-icons.css";`**
