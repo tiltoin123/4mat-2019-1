@@ -7,7 +7,7 @@ const controller = {};
    por uma rota deve ter os parâmetros req(uest)
    e res(ponse).
 */
-controller.novo = function(req, res) {
+/* controller.novo = function(req, res) {
    Cor.create(req.body).then(
       // Callback se ser certo
       function() {
@@ -21,9 +21,20 @@ controller.novo = function(req, res) {
          res.sendStatus(500).end();
       }
    );
+} */
+
+controller.novo = async function(req, res) {
+   try {
+      await Cor.create(req.body);
+      res.sendStatus(201).end();
+   }
+   catch(erro) {
+      console.error(erro);
+      res.sendStatus(500).end();
+   }
 }
 
-controller.listar = function(req, res) {
+/* controller.listar = function(req, res) {
 
    Cor.find().exec().then(
       // Callback do bem
@@ -40,6 +51,17 @@ controller.listar = function(req, res) {
    
    );
 
+} */
+
+controller.listar = async function (req, res) {
+   try{
+      const cores = await Cor.find().exec();
+      res.json(cores).end();
+   }
+   catch(erro) {
+      console.error(erro);
+      res.sendStatus(500).end();      
+   }
 }
 
 controller.obterUm = function(req, res) {
