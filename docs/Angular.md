@@ -24,7 +24,7 @@ A versão esperada do Angular CLI, em abril de 2019, é, pelo menos, **7.3.7**.
 > Nesse caso, precisaremos criar um arquivo de nome `ng.bat`, dentro da pasta de trabalho (`ProgWeb` ou semelhante), com o seguinte conteúdo:
 >
 > ```cmd
- > %USERPROFILE%\AppData\Roaming\npm\bin\ng %1 %2 %3 %4 %5 %6 %7 %8 %9
+ > %USERPROFILE%\AppData\Roaming\npm\ng %1 %2 %3 %4 %5 %6 %7 %8 %9
 > ```
 >
 > Após criar e salvar o arquivo, o comando `ng --version` deve funcionar no terminal.
