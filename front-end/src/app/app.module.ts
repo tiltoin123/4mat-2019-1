@@ -11,6 +11,7 @@ import { MenuPrincipalComponent } from './ui/menu-principal/menu-principal.compo
 import { RodapeComponent } from './ui/rodape/rodape.component';
 import { CombustivelListComponent } from './combustivel/combustivel-list/combustivel-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ExcluirDlgComponent } from './ui/excluir-dlg/excluir-dlg.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     CabecComponent,
     MenuPrincipalComponent,
     RodapeComponent,
-    CombustivelListComponent
+    CombustivelListComponent,
+    ExcluirDlgComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule
+  ],
+  entryComponents: [
+    ExcluirDlgComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
