@@ -8,9 +8,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .mat-table .mat-row .mat-raised-button {
-   visibility: hidden;
+   opacity: 0.3;
 }
 
 .mat-table .mat-row:hover .mat-raised-button {
-   visibility: visible;
+   opacity: 1;
+}
+
+.separador10 {
+   margin-right: 10px;
+}
+
+.list-toolbar {
+   margin-bottom: 20px;
+   background: transparent;
+   padding-left: 0 !important;
 }

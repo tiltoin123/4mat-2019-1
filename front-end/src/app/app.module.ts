@@ -12,6 +12,7 @@ import { RodapeComponent } from './ui/rodape/rodape.component';
 import { CombustivelListComponent } from './combustivel/combustivel-list/combustivel-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExcluirDlgComponent } from './ui/excluir-dlg/excluir-dlg.component';
+import { CombustivelFormComponent } from './combustivel/combustivel-form/combustivel-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ExcluirDlgComponent } from './ui/excluir-dlg/excluir-dlg.component';
     MenuPrincipalComponent,
     RodapeComponent,
     CombustivelListComponent,
-    ExcluirDlgComponent
+    ExcluirDlgComponent,
+    CombustivelFormComponent
   ],
   imports: [
     BrowserModule,

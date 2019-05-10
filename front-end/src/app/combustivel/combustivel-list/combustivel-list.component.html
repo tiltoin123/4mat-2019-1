@@ -1,5 +1,13 @@
 <h1>Combustíveis</h1>
 
+<mat-toolbar class="list-toolbar">
+  <a mat-raised-button color="accent" [routerLink]="['/combustivel/novo']">
+    <mat-icon>add_circle</mat-icon>
+    <span class="separador10"></span>
+    <span>Novo combustível</span>
+  </a>
+</mat-toolbar>
+
 <table mat-table mat-table-responsive [dataSource]="combustiveis" class="mat-elevation-z5">
 
   <!--- Note that these columns can be defined in any order.

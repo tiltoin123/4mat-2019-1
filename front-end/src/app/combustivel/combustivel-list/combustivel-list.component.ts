@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CombustivelService } from '../combustivel.service';
-
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-combustivel-list',
@@ -13,7 +13,8 @@ export class CombustivelListComponent implements OnInit {
   public displayedColumns: string[] = ['descricao', 'editar', 'excluir'];
   // Injetando o serviço do combustível
   constructor(
-    private combustivelSrv: CombustivelService
+    private combustivelSrv: CombustivelService,
+    private snackBar: MatSnackBar
   ) { }
 
   // Função de execução assíncrona
@@ -30,6 +31,8 @@ export class CombustivelListComponent implements OnInit {
     try {
       if (confirm('Deseja realmente excluir este combustível?')) {
         await this.combustivelSrv.excluir(id).toPromise();
+        this.snackBar.open('Combustível excluído com sucesso', 'Entendi',
+          {duration: 2000});
         this.ngOnInit(); // Recarregar a lista
       }
     } catch (erro) {
